@@ -51,7 +51,9 @@ rownames(results) <- c("none","aids")
 ```{r}
 barchartGC(results,type = "percent")
 ```
-
+    
+We would expect to see both graphs of equal size (50% on each side) if the two are independent. They do not appear to be equal, shedding doubt on the idea of independence.   
+  
 ### Numerical Results
 
 <!--Display numerical evidence as to the effectiveness of the vaccine with explanations !--> 
