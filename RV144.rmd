@@ -67,17 +67,34 @@ rowPerc(results)
 ## Inferential results
 
 <!--Display inferential evidence as to the effectiveness of the vaccine with explanations and interpretations!-->
-We now test the independence of the aids vaccine and placebo group.  We state the null and alternative hypotheses for this test.  
+ 
+```{r}
+CHI <- chisqtestGC(results, graph = TRUE)
+CHI
+```
+ 
+  We now test the independence of the aids vaccine and placebo group using the chi-square test.  We will state the null and alternative hypotheses for this test.  
 
 $H_0:$ The placebo and aids vaccine treatment is independent of contracting the disease Aids.  
 
 $H_A:$ Having the vaccine is related to contracting the disease.  
-```{r}
-chisqtestGC(results, graph = TRUE)
-```
-  
-  The p-value of 0.0482 means the probability of getting a result like that just obtained if the null hypothesis is true is approximately 4 percent.  This is normally considered significant.
 
+The resulting interpretation is the following: if the null hyothesis is indeed true, then the results we just obtained would happen about `r CHI$p.value` percent of the time. 
+
+As a second approach, we will consider Fisher's exact test.  We will state the null and alternative hypotheses for that test.  
+
+$H_0:$ The odds ratio between contracting aids and having the vaccine contains the number 1.  
+
+$H_A:$ The odds ratio between contracting aids and having the vaccine does not contain the number 1.
+
+```{r}
+FISH <- fisher.test(results)
+FISH
+```
+  The p-value from the Fisher's exact test is `r FISH$p.value` and the confidence interval is `r FISH$conf.int`. Therefore, we must reject the null hypothesis.
+  
+From these two tests, there is evidence that the results are not independent nor is the odds ratio 1. 
+  
 ## Conclusions
 
 <Summarise your results as to the effectiveness of the vaccine with explanations that could be understood by your mom>
