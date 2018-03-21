@@ -35,9 +35,9 @@ We create the following data set
 ```{r}
 groupsize = 16402
 subgp = groupsize/2
-vacine = c(subgp-51,51)
+vaccine = c(subgp-51,51)
 placebo =  c(subgp-74,74)
-results = as.table(cbind(vacine,placebo))
+results = as.table(cbind(vaccine,placebo))
 rownames(results) <- c("none","aids")
 
 ```
@@ -48,23 +48,32 @@ rownames(results) <- c("none","aids")
 
 ### Graphical results
 <!--Display graphical evidence as to the effectiveness of the vaccine with explanations!-->
+The following barchart visually represents the percentages of vaccine and placebo recipients who did or did not contract HIV.
 ```{r}
 barchartGC(results,type = "percent")
 ```
     
-We would expect to see both graphs of equal size (50% on each side) if the two are independent. They do not appear to be equal, shedding doubt on the idea of independence.   
+If the two variables are independent, meaning there is no relationship between getting the vaccine and contracting the virus, then we would expect to see both graphs of equal size (50% on each side). They do not appear to be equal, shedding doubt on the idea of independence. 
+
+
   
 ### Numerical Results
 
 <!--Display numerical evidence as to the effectiveness of the vaccine with explanations !--> 
-
+In order to further explore the idea of independence bewteen the variables, we can break down the data numerically. The following information shows the percentages of both vaccine recipients and placebo recipients that did or did not contract the virus.
 ```{r}
 colPerc(results)
 rowPerc(results)
 ```
-
-
-
+   From these percents, we see that while the percents of HIV negative vaccine recipients and HIV negative placebo recipients is close, there is still a slightly higher percent of vaccine users who remained negative. The more compelling percents are those who tested positive. There is a 19% reduction of aids contraction in the group who received the vaccine.  
+ 
+ Another way to view the data is as hard numbers rather than percentages.  
+```{r}
+as.data.frame.matrix(results)
+```
+  
+  Looking at the above table, we see that out of the 16,277 individuals who remained HIV negative, 23 more individuals received the vaccine. 
+  We also note that out of the 125 individuals who tested positive for the virus, the greater amount was those who received the placebo. These numbers seem to indicate that there might in fact be a relationship between having the vaccine and not contracting - or perhaps *reducing* one's chances of contracting - the virus.  
 
 ## Inferential results
 
