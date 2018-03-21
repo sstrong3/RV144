@@ -48,6 +48,7 @@ rownames(results) <- c("none","aids")
 
 ### Graphical results
 <!--Display graphical evidence as to the effectiveness of the vaccine with explanations!-->
+
 The following barchart visually represents the percentages of vaccine and placebo recipients who did or did not contract HIV.
 ```{r}
 barchartGC(results,type = "percent")
@@ -61,18 +62,12 @@ If the two variables are independent, meaning there is no relationship between g
 
 <!--Display numerical evidence as to the effectiveness of the vaccine with explanations !--> 
 In order to further explore the idea of independence bewteen the variables, we can break down the data numerically. The following information shows the percentages of both vaccine recipients and placebo recipients that did or did not contract the virus.
-```{r}
-barchartGC(results,type = "percent")
-```
-
-### Numerical Results
-
-<!--Display numerical evidence as to the effectiveness of the vaccine with explanations !--> 
 
 ```{r}
 colPerc(results)
 rowPerc(results)
 ```
+
    From these percents, we see that while the percents of HIV negative vaccine recipients and HIV negative placebo recipients is close, there is still a slightly higher percent of vaccine users who remained negative. The more compelling percents are those who tested positive. There is a 19% reduction of aids contraction in the group who received the vaccine.  
  
  Another way to view the data is as hard numbers rather than percentages.  
@@ -82,8 +77,6 @@ as.data.frame.matrix(results)
   
   Looking at the above table, we see that out of the 16,277 individuals who remained HIV negative, 23 more individuals received the vaccine. 
   We also note that out of the 125 individuals who tested positive for the virus, the greater amount was those who received the placebo. These numbers seem to indicate that there might in fact be a relationship between having the vaccine and not contracting - or perhaps *reducing* one's chances of contracting - the virus.  
-
-
 
 
 ## Inferential results
@@ -120,3 +113,7 @@ From these two tests, there is evidence that the results are not independent nor
 ## Conclusions
 
 <Summarise your results as to the effectiveness of the vaccine with explanations that could be understood by your mom>
+
+After analyzing the data both graphically and numerically, it was determined that more vaccine recipients remained HIV negative than placebo recipients. Directly related to that data, we found that out of those individuals who did end up contracting the virus, a significantly greater amount of them had taken the placebo. This led us to believe that the vaccine might be effective.  
+
+In order to asses that possibility, we used both the Chi-Square test and Fisher's Exact test. Since both tests yielded p-values lower the typically accepted 5% cut-off value, we concluded that there **is** in fact a relationship between the vaccine and the contraction of the virus. More specifically, those who received the vaccine were *less* likely to contract the virus. Thus, the vaccine does appear to be somewhat effective in reducing one's chances of contracting HIV and developing Aids.
