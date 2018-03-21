@@ -35,9 +35,9 @@ We create the following data set
 ```{r}
 groupsize = 16402
 subgp = groupsize/2
-vacine = c(subgp-51,51)
+vaccine = c(subgp-51,51)
 placebo =  c(subgp-74,74)
-results = as.table(cbind(vacine,placebo))
+results = as.table(cbind(vaccine,placebo))
 rownames(results) <- c("none","aids")
 
 ```
