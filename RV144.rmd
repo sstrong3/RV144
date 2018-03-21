@@ -62,6 +62,14 @@ If the two variables are independent, meaning there is no relationship between g
 <!--Display numerical evidence as to the effectiveness of the vaccine with explanations !--> 
 In order to further explore the idea of independence bewteen the variables, we can break down the data numerically. The following information shows the percentages of both vaccine recipients and placebo recipients that did or did not contract the virus.
 ```{r}
+barchartGC(results,type = "percent")
+```
+
+### Numerical Results
+
+<!--Display numerical evidence as to the effectiveness of the vaccine with explanations !--> 
+
+```{r}
 colPerc(results)
 rowPerc(results)
 ```
@@ -75,15 +83,40 @@ as.data.frame.matrix(results)
   Looking at the above table, we see that out of the 16,277 individuals who remained HIV negative, 23 more individuals received the vaccine. 
   We also note that out of the 125 individuals who tested positive for the virus, the greater amount was those who received the placebo. These numbers seem to indicate that there might in fact be a relationship between having the vaccine and not contracting - or perhaps *reducing* one's chances of contracting - the virus.  
 
+
+
+
 ## Inferential results
 
 <!--Display inferential evidence as to the effectiveness of the vaccine with explanations and interpretations!-->
+ 
+```{r}
+CHI <- chisqtestGC(results, graph = TRUE)
+CHI
+```
+ 
+  We now test the independence of the HIV vaccine and placebo group using the chi-square test.  We will state the null and alternative hypotheses for this test.  
+
+$H_0:$ The placebo and aids vaccine treatment is independent of contracting HIV.  
+
+$H_A:$ Having the vaccine is related to contracting the disease.  
+
+The resulting interpretation is the following: if the null hyothesis is indeed true, then the results we just obtained would happen about `r CHI$p.value` percent of the time. 
+
+As a second approach, we will consider Fisher's exact test.  We will state the null and alternative hypotheses for that test.  
+
+$H_0:$ The odds ratio between contracting HIV and having the vaccine contains the number 1.  
+
+$H_A:$ The odds ratio between contracting HIV and having the vaccine does not contain the number 1.
 
 ```{r}
-chisqtestGC(results, graph = TRUE)
+FISH <- fisher.test(results)
+FISH
 ```
-
-
+  The p-value from the Fisher's exact test is `r FISH$p.value` and the confidence interval is `r FISH$conf.int`. Therefore, we must reject the null hypothesis.
+  
+From these two tests, there is evidence that the results are not independent nor is the odds ratio 1. 
+  
 ## Conclusions
 
 <Summarise your results as to the effectiveness of the vaccine with explanations that could be understood by your mom>
