@@ -76,3 +76,7 @@ chisqtestGC(results, graph = TRUE)
 ## Conclusions
 
 <Summarise your results as to the effectiveness of the vaccine with explanations that could be understood by your mom>
+
+After analyzing the data both graphically and numerically, it was determined that more vaccine recipients remained HIV negative than placebo recipients. Directly related to that data, we found that out of those individuals who did end up contracting the virus, a significantly greater amount of them had taken the placebo. This led us to believe that the vaccine might be effective.  
+
+In order to asses that possibility, we used both the Chi-Square test and Fisher's Exact test. Since both tests yielded p-values lower the typically accepted 5% cut-off value, we concluded that there **is** in fact a relationship between the vaccine and the contraction of the virus. More specifically, those who received the vaccine were *less* likely to contract the virus. Thus, the vaccine does appear to be somewhat effective in reducing one's chances of contracting HIV and developing Aids.
